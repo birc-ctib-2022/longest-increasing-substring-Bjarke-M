@@ -57,6 +57,7 @@ def longest_increasing_substring(x: Sequence[Any]) -> tuple[int, int]:
                 best = (cur_start, i)
     if substring_length((cur_start,len(x))) > substring_length(best):
         best = (cur_start, len(x))
+        cur_start = i
       
     # FIXME: explore the other possibilities
     return best
