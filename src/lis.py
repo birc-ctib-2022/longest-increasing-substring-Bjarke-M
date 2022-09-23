@@ -47,6 +47,16 @@ def longest_increasing_substring(x: Sequence[Any]) -> tuple[int, int]:
     (5, 9)
     """
     # The leftmost empty string is our first best bet
-    best = (0, 0)
+    if not x: return (0,0)
+    cur_start=0 # starting at the start just seems the smartest 
+    best = (0, 0) # here we save the longest value, this is opdated if we encounter a longer substring
+    for i in range(1,len(x)):
+        if x[i-1] !< x[i]: # making sure that we are dealing with an increasing substring 
+            break
+            if substring_length((cur_start,i)) > substring_length(best): #checking if the current substring is better than the one we saved in best
+                best = (cur_start, i)
+    if substring_length((cur_start,len(x))) > substring_length(best):
+        best = (cur_start, len(x))
+      
     # FIXME: explore the other possibilities
     return best
